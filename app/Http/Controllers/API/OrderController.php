@@ -53,7 +53,7 @@ class OrderController extends Controller
 
     public function exportToExcel()
     {
-        $orders = Order::all();
+        $orders = Order::where('user_id', auth()->user()->getAuthIdentifier())->get();
 
         $filename = 'orders.xlsx';
 
@@ -62,7 +62,7 @@ class OrderController extends Controller
 
     public function exportToCSV()
     {
-        $orders = Order::all();
+        $orders = Order::where('user_id', auth()->user()->getAuthIdentifier())->get();
 
         $filename = 'orders.csv';
 
