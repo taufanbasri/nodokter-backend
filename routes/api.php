@@ -26,5 +26,6 @@ Route::post('login', [AuthController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/orders', [OrderController::class, 'store']);
+    Route::put('/orders/{order}/cancel', [OrderController::class, 'cancel']);
     Route::post('/products/{product}/ratings', [RatingController::class, 'store']);
 });
