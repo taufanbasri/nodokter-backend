@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\OrderController;
+use App\Http\Controllers\API\ProductController;
 use App\Http\Controllers\API\RatingController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -29,6 +30,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/orders/{order}/cancel', [OrderController::class, 'cancel']);
 
     Route::post('/products/{product}/ratings', [RatingController::class, 'store']);
+
+    Route::get('/orders/export/excel', [OrderController::class, 'exportToExcel']);
+    Route::get('/orders/export/csv', [OrderController::class, 'exportToCSV']);
 });
-Route::get('/orders/export/excel', [OrderController::class, 'exportToExcel']);
-Route::get('/orders/export/csv', [OrderController::class, 'exportToCSV']);
+
+Route::get('/products', [ProductController::class, 'index']);
