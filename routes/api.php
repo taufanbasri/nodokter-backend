@@ -27,5 +27,8 @@ Route::post('login', [AuthController::class, 'login']);
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/orders', [OrderController::class, 'store']);
     Route::put('/orders/{order}/cancel', [OrderController::class, 'cancel']);
+
     Route::post('/products/{product}/ratings', [RatingController::class, 'store']);
 });
+Route::get('/orders/export/excel', [OrderController::class, 'exportToExcel']);
+Route::get('/orders/export/csv', [OrderController::class, 'exportToCSV']);
